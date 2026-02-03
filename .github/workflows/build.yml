@@ -25,10 +25,14 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
+      - name: Read Openwrt version file
+        id: get-openwrt-version
+        run: echo "version=$(grep -o '^[^#]*' openwrt.version | tr -d '[:space:]')" >> $GITHUB_OUTPUT
+
       - uses: izer-xyz/openwrt-imagebuilder-action@main
         with:
           image: ${{ matrix.platform }}
-          openwrt-version: '24.10.5'
+          openwrt-version: ${{ steps.get-openwrt-version.outputs.version }}
           rootfs-size: 512
 
       - name: Store built packages
