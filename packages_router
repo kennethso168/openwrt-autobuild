@@ -26,7 +26,7 @@ wget curl luci-app-ddns ddns-scripts-cloudflare ca-certificates bind-host
 # Wireguard
 # https://openwrt.org/docs/guide-user/services/vpn/wireguard/basics
 
-luci-proto-wireguard luci-app-wireguard qrencode
+luci-proto-wireguard qrencode
 
 # Keepalived
 
