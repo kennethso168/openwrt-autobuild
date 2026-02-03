@@ -1,0 +1,38 @@
+name: Build openwrt images
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+  workflow_dispatch:
+    
+jobs:
+
+  build:
+
+    strategy:
+      matrix:
+        platform: ['x86-64', 'armsr-armv8']
+      fail-fast: true
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: izer-xyz/openwrt-imagebuilder-action@main
+        with:
+          image: ${{ matrix.platform }}
+          openwrt-version: '24.10.5'
+          rootfs-size: 512
+
+      - name: Store built packages
+        uses: actions/upload-artifact@v6
+        with:
+          name: ${{ matrix.platform }}
+          path: bin/*

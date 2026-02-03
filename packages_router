@@ -1,0 +1,46 @@
+# This file will be processed by action
+# All empty lines and lines beginning with # will be removed
+# Newlines will be converted to spaces
+# The resulting string should match the format as specified in https://openwrt.org/docs/guide-user/additional-software/imagebuilder#selecting_packages
+# Processing command: grep -o '^[^#]*' packages_router | tr '\n' ' '
+
+# LUCI and LUCI over HTTPS
+# https://openwrt.org/docs/guide-user/luci/luci.secure
+
+luci luci-ssl
+
+# sha1sum and base64 intended for https://github.com/gekmihesg/ansible-openwrt
+
+coreutils-sha1sum coreutils-base64
+
+# QEMU Guest Agent
+
+qemu-ga
+
+# DDNS client
+# https://openwrt.org/docs/guide-user/luci/luci.secure
+# Also wget and curl are used for other scripts
+
+wget curl luci-app-ddns ddns-scripts-cloudflare ca-certificates bind-host
+
+# Wireguard
+# https://openwrt.org/docs/guide-user/services/vpn/wireguard/basics
+
+luci-proto-wireguard luci-app-wireguard qrencode
+
+# Keepalived
+
+keepalived conntrackd
+
+# Other packages
+
+nano-full
+iperf3
+ethtool-full
+htop
+jq
+luci-mod-rpc # for home assistant integration
+luci-app-sqm
+prometheus-node-exporter-lua-nat_traffic # node exporter lua
+luci-app-watchcat
+luci-app-wol
