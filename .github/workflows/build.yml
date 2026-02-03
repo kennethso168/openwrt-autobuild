@@ -29,10 +29,15 @@ jobs:
         id: get-openwrt-version
         run: echo "version=$(grep -o '^[^#]*' openwrt.version | tr -d '[:space:]')" >> $GITHUB_OUTPUT
 
+      - name: Read packages list for router
+        id: get-pkg-list
+        run: echo "pkgs=$(grep -o '^[^#]*' packages_router | tr '\n' ' ')" >> $GITHUB_OUTPUT
+
       - uses: izer-xyz/openwrt-imagebuilder-action@main
         with:
           image: ${{ matrix.platform }}
           openwrt-version: ${{ steps.get-openwrt-version.outputs.version }}
+          packages: ${{ steps.get-pkg-list.outputs.pkgs }}
           rootfs-size: 512
 
       - name: Store built packages
