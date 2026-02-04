@@ -33,7 +33,7 @@ jobs:
         id: get-pkg-list
         run: echo "pkgs=$(grep -o '^[^#]*' packages_router | tr '\n' ' ')" >> $GITHUB_OUTPUT
 
-      - uses: izer-xyz/openwrt-imagebuilder-action@main
+      - uses: kennethso168/openwrt-imagebuilder-action@v7.0.1
         with:
           image: ${{ matrix.platform }}
           openwrt-version: ${{ steps.get-openwrt-version.outputs.version }}
