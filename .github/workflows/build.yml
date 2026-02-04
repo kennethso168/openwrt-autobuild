@@ -45,3 +45,11 @@ jobs:
         with:
           name: ${{ matrix.platform }}
           path: bin/*
+
+  release:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/download-artifact@v7
+      - name: Display structure of downloaded files
+        run: ls -R
