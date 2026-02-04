@@ -70,6 +70,7 @@ jobs:
         with:
           tag_name: build-${{ steps.get-timestamp.outputs.ts }}
           name: OpenWRT Build at ${{ steps.get-timestamp.outputs.ts }}
+          if: github.ref == 'refs/heads/main'
           draft: false
           prerelease: false
           files: |
