@@ -53,7 +53,7 @@ jobs:
       - uses: actions/download-artifact@v7
       - name: Display structure of downloaded files
         run: ls -R
-      - name: Remove profiles.json and sha256sums file
-        run: rm */sha256sums */profiles.json
+      - name: Remove files not that are not images
+        run: rm */sha256sums */profiles.json */*.bom.cdx.json */*.manifest
       - name: Display resulting structure again
         run: ls -R
