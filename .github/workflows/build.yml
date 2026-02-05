@@ -36,6 +36,11 @@ jobs:
         id: get-pkg-list
         run: echo "pkgs=$(grep -o '^[^#]*' packages_router | tr '\n' ' ')" >> $GITHUB_OUTPUT
 
+      - name: Download and deploy node exporter
+        run: bash node_exporter.sh
+        env:
+          platform: ${{ matrix.platform }}
+
       - uses: kennethso168/openwrt-imagebuilder-action@a4a20ac1ced987ff442b5077bf8dd0589e89e906 # v7.0.1
         with:
           image: ${{ matrix.platform }}
