@@ -23,7 +23,7 @@ node_exporter_archive_name="node_exporter-$node_exporter_version.linux-$arch"
 node_exporter_download_url="https://github.com/prometheus/node_exporter/releases/download/v$node_exporter_version/$node_exporter_archive_name.tar.gz"
 
 echo "Downloading node exporter"
-wget -nc $node_exporter_download_url
+wget -nc --progress=dot:mega $node_exporter_download_url
 
 echo "Extracting node exporter"
 tar -zxf $node_exporter_archive_name".tar.gz"
