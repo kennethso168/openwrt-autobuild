@@ -41,6 +41,9 @@ jobs:
         env:
           platform: ${{ matrix.platform }}
 
+      - name: Display deployed files
+        run: ls -R files
+
       - uses: kennethso168/openwrt-imagebuilder-action@a4a20ac1ced987ff442b5077bf8dd0589e89e906 # v7.0.1
         with:
           image: ${{ matrix.platform }}
