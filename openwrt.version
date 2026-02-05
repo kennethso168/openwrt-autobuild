@@ -1,2 +1,2 @@
-# version for openwrt
+# renovate: datasource=github-releases depName=openwrt/openwrt
 24.10.5
