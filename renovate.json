@@ -5,6 +5,7 @@
     ":semanticCommits",
     "helpers:pinGitHubActionDigestsToSemver"
   ],
+  "minimumReleaseAge": "3 days",
   "customManagers": [
     {
       "customType": "regex",
