@@ -3,7 +3,7 @@
 echo "Download and extract node exporter, and configure node exporter service"
 
 # renovate: datasource=github-releases depName=prometheus/node_exporter
-node_exporter_version="1.10.2"
+node_exporter_version="1.11.1"
 
 case $platform in
 
